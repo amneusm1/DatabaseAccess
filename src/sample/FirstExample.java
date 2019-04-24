@@ -1,19 +1,22 @@
 package sample;//STEP 1. Import required packages
 import java.sql.*;
+import java.util.Scanner;
 
 public class FirstExample {
     // JDBC driver name and database URL
     static final String JDBC_DRIVER = "oracle.jdbc.driver.OracleDriver";
     static final String DB_URL = "jdbc:oracle:thin:@citdb.nku.edu:1521:csc450";
 
-    //  Database credentials
-    static final String USER = "username";
-    static final String PASS = "password";
-
     public static void main(String[] args) {
         Connection conn = null;
         Statement stmt = null;
         try{
+            // get Database Credentials
+            Scanner inScan = new Scanner(System.in);
+            System.out.println("Enter Database Username:");
+            String USER = inScan.next();
+            System.out.println("Enter Database Password: ");
+            String PASS = inScan.next();
             //STEP 2: Register JDBC driver
             Class.forName(JDBC_DRIVER);
 
